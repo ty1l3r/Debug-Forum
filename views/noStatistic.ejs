@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<article id="stat">
+
+    <%
+		var dateNow = new Date();
+		var paperMC = statistics.paper_more_comment;
+		var last_paper = statistics.last_paper;	
+		var last_paper_date = 	"No Date";				
+	%>
+        <h4 id="date_now">Nous somme le:
+            <%=dateNow.getDate()%>/
+                <%=dateNow.getMonth()+1%>/
+                    <%=dateNow.getFullYear()%>
+        </h4>
+        <h4 id="nbT_topics">Nombre de sujets ouverts: </br>
+            0
+        </h4>
+        <h4 id="nbT_papers">Nombre d'article écrits:</br>
+            0
+        </h4>
+        <h4 id="nbT_users">Nombres d'inscrits:</br>
+            0
+        </h4>
+
+        <h4 id="user_connect">Utilisateur connecté:</br>
+            0
+        </h4>
+
+
+        <section id="paperMC">
+
+            <h4>Article le plus commenté:</h4>
+
+            <a href="/forum/papers/<%=paperMC.topic%>">
+                <h5>titre: 0
+                </h5>
+            </a>
+            <h5>sujet: 0
+            </h5>
+            <h5>nombre de commentaire: 0
+            </h5>
+
+
+
+        </section>
+        <h4 id="last_paper_title"> Dernier article posté: </h4>
+
+        <section id="last_paper">
+
+            <h5>
+                Aucun Article
+            </h5>
+
+            <article>
+
+
+                <p>
+                    Aucun Content
+                </p>
+
+            </article>
+            <aside>
+
+                Pas d'Article
+            </aside>
+
+        </section>
+
+</article>
+<!-- EO info -->

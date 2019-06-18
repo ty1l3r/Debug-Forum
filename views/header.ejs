@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 
-<head>
-	<!-- device-width pour responsive adapter a la taille de l'écrand -->
-	<link rel="stylesheet" media="screen and (min-width: 1280px)" href="http://<%=session.adr_ip%>:8080/css/style_pc.css">
-	<link rel="stylesheet" media="screen and (max-width: 1279px)" href="http://<%=session.adr_ip%>:8080/css/style_tablet.css">
-	<link rel="stylesheet" media="screen and (max-width: 959px)" href="http://<%=session.adr_ip%>:8080/css/style_tablette-smartphone.css">
-	<link rel="stylesheet" media="screen and (max-width: 500px)" href="http://<%=session.adr_ip%>:8080/css/style_smartphone.css">
-	<link rel="stylesheet"  href="http://<%=session.adr_ip%>:8080/css/style.css">
-	
-	<link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
-	<link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+<head>    <!-- device-width pour responsive adapter a la taille de l'écrand -->
 
-	<% if(session.error){
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Footer-Clean.css">
+    <link rel="stylesheet" href="/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+      <link rel="stylesheet" href="/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/css/Footer-Basic.css">
+    <link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
+    <link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
+
+    <% if(session.error){
 		var error_message = session.error;
 	 %>
-		<script >
-			var error_message = '<%=error_message%>';
-			alert(error_message);
-		</script>
-	<% } session.error = undefined;  	%>
+        <script>
+            var error_message = '<%=error_message%>';
+            alert(error_message);
+        </script>
+        <% } session.error = undefined;  	%>
 
-</head> 
-<header>
-				<a id="logo_header" title="Retour à l'accueil" href="/forum/index"><img id="logo" src="http://<%=session.adr_ip%>:8080/img/logo_forum.png" alt="logo" /></a>
-
-				<h1 id="title_header">forum developpeurs</h1>			
-
-			   	<div id="login">
-					<%if(!session.connection){%>
-			   		<form id="login_form" action="/forum/login" method="post">
-			   			<label id="title_login" >Connexion:</label>
-			   			<input class="email" type="email" name="email" required autocomplete ="off">
-			   			<input class="pass" type="password" name="password" required autocomplete ="off">
-			   			<input class="valid_login" type="submit" value="connexion">
-			   			<a href="/forum/signin" id="signin" title="Inscription">inscription</a>
-			   		</form>
-			   		<%} else{%>
-						<h3 id="username"><a  href="/forum/report"><%=session.username%></a></h3>
-						<a id="logout" href="/forum/logout" title="Déconnection">Déconnection</a>
-					<%}%>
-			   	</div> <!-- EO login -->			   		
-</header>
-
-
+</head>
+<!--============ BARRE DE NAVIGATION ==================-->
+<div>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+        <div class="container-fluid"><a class="navbar-brand" href="/forum/acc">Forum AkMusic</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/forum/index">Forum</a></li>
+              
+                </ul>
+                <span class="navbar-text actions"> 
+        <%if(!session.connection){%>
+                <a class="login" href="/forum/login">Log In</a>
+                <a class="btn btn-light action-button" role="button" href="/forum/signin">Sign Up</a>
+        <%} else{%>
+            <h3 id="username"><a href="/forum/report"><%=session.username%></a></h3>
+            <a id="logout" href="/forum/logout" title="Déconnection">Déconnection</a>
+        <%}%>
+                </span>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--=================================================-->

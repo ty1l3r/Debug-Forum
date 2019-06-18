@@ -1,0 +1,41 @@
+
+
+
+<form id="new_topic" action="/forum/add_topic" method="post">
+     <div class="card card border-warning mb-3 ml-3 mr-5" >
+        <div class="card ml-3">
+            <h4>Ajouter un sujet :</h4>
+            <div class="card-body border rounded shadow-sm ml-1" >
+                <div class="row">
+                    <div class="col-md-3" style="padding: 5px;">
+                        <p>Titre du Topic :&nbsp;</p>
+                    </div>
+                    <div class="col-md-7" style="padding: 5px;"><input class="border rounded border-secondary" name="title_topic" type="text" autocomplete="off" style="width: 209px;filter: blur(0px);" required=""></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3" style="padding: 5px;">
+                        <p>Titre de l'article  :&nbsp;</p>
+                    </div>
+                    <div class="col-md-7" style="padding: 5px;"><input class="border rounded border-secondary" name="title_paper" type="text" style="width: 209px;filter: blur(0px);" autocomplete="off" required=""></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" style="padding: 5px;">
+                        <p>Article :&nbsp;</p>
+                    </div>
+                    <div class="col-md-7" style="padding: 5px;"><textarea class="border rounded border-secondary shadow-sm form-control-lg" name="paper" required maxlength="20" autocomplete="off" style="width: 400px;height: 95px;font-size: 13px;filter: blur(0px);" required=""></textarea></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" style="padding: 5px;">
+                        <p></p>
+                    </div>
+                    <div class="col-md-7" style="padding: 5px;">
+                        <div class="btn-group" role="group"><button class="btn btn-primary text-warning border rounded border-danger" type="submit" value="envoyer" >Envoyer&nbsp;</button></div>
+                    </div>
+                </div>
+                <div class="btn-group" role="group" type="submit" value="envoyer"></div>
+            </div>
+        </div>
+    </div>
+</form> 
+

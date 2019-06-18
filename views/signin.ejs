@@ -1,33 +1,31 @@
-<!DOCTYPE html>
-<html>
-	<head>
+<%- include('header') %>
 
-		<title>Forum developpeurs Inscrption</title>
-		<link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
-		<link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif" >
+    <form id="form_signin" action="/forum/new_user" method="post">
+        <div class="text-lowercase border rounded d-lg-flex justify-content-lg-center register-photo" data-bs-hover-animate="pulse">
+            <div class="text-capitalize text-left text-success bg-success border rounded border-secondary shadow form-container">
+                <form class="text-primary" method="post">
+                    <h2 class="text-center"><strong>Create</strong> an account.</h2>
 
-	</head>
+                    <div class="form-group pl-3 pr-3" name="username"><input class="form-control input_username " type="text" name="username" placeholder="Pseudo"></div>
 
-	<body>
-		<div id="page">
-			<%- include('header') %>
-				
-				<form id="form_signin" action="/forum/new_user" method="post">
+                    <div class="form-group pl-3 pr-3"><input class="input_mail form-control" type="email" name="email" placeholder="Email"></div>
 
-						<h2 class="title_signin">inscription</h2>
+                    <div class="form-group pl-3 pr-3"><input class="input_mdp form-control" type="password" name="password" placeholder="Password"></div>
 
-		        			<label class="label_username">Votre pseudo</label>
-		        			<input class="input_username" type="text" name="username" required autocomplete ="off"/>
-		        			<label class="label_mail">adresse mail:</label>
-				        	<input class="input_mail" type="email" name="email" required autocomplete ="off"/>
-			       			<label class="label_mdp">mot de passe</label>
-			        		<input class="input_mdp" type="password" name="password" required/>
-			        		<label class="label_vmdp">verification du mot de passe</label>
-			        		<input class="input_vmdp" type="password" name="vpassword" required/>
-			        		<input class="submit_signin" type="submit" value="Inscription" />
+                    <div class="form-group pl-3 pr-3"><input class="input_vmdp form-control" type="password" name="vpassword" placeholder="Password (repeat)"></div>
 
-			    </form>
-			<%- include('footer') %>
-		</div>
-	</body>
-</html>
+                    <div class="form-group pl-3 pr-3">
+                        <div class="form-check" style="color:white;"><label class="form-check-label"><input class="form-check-input" type="checkbox">I agree to the license terms.</label></div>
+                    </div>
+
+                    <div class="form-group pl-3 pr-3"><button class="btn btn-primary btn-block" type="submit" value="Inscription">Sign Up</button></div>
+
+                    <a class="already pl-3 pr-3 mb-3" style="color:white" href="#">You already have an account? Login here.</a></form>
+            </div>
+        </div>
+    </form>
+
+
+
+    <!--===========================-->
+

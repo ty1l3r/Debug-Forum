@@ -111,6 +111,30 @@ app
         res.render('signin.ejs', { session: req.session });
     }) // EO singin
 
+//------------------------------------------------------------------------------------/
+//------------------------- Page de connection ---------------------------------------/
+//------------------------------------------------------------------------------------/
+.get('/forum/login', function(req, res) {
+        req.session.adr_ip = ip.address();
+
+        res.render('login.ejs', { session: req.session });
+    }) // EO singin
+//------------------------------------------------------------------------------------/
+//------------------------- Page carouselle---------------------------------------/
+//------------------------------------------------------------------------------------/
+.get('/forum/carouselle', function(req, res) {
+        req.session.adr_ip = ip.address();
+
+        res.render('carouselle.ejs', { session: req.session });
+    }) // EO singin
+
+//------------------------- Page Statistic---------------------------------------/
+//------------------------------------------------------------------------------------/
+.get('/forum/acc', function(req, res) {
+        req.session.adr_ip = ip.address();
+
+        res.render('acc.ejs', { session: req.session });
+    }) // EO singin
 
 //------------------------------------------------------------------------------------/
 //-------- Traitement du formulaire d'authentification utilisateur -------------------/
@@ -150,7 +174,7 @@ app
         req.session.username = '';
         req.session.email = '';
         req.session.topic = false;
-        user_connect -= 1;
+        user_connect = 1;
         console.log(user_connect + ' Utilisateur connectés sur le forum')
         res.redirect('/forum/index');
 

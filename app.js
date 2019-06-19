@@ -110,6 +110,23 @@ app
 
         res.render('signin.ejs', { session: req.session });
     }) // EO singin
+//------------------------------------------------------------------------------------/
+//------------------------- Page d'admin ---------------------------------------/
+//------------------------------------------------------------------------------------/
+.get('/forum/admin', function(req, res) {
+
+        req.session.adr_ip = ip.address();
+        req.session.sujet = false;
+        req.session.user_connect = user_connect;
+
+        db.topics(function(topics) {
+        db.statistics(function(data) {
+
+        res.render('admin.ejs', { topics: topics, session: req.session, statistics: data });
+
+            }); // EO statistics			
+        }); // EO db.sujets()
+    }) // EO /index
 
 //------------------------------------------------------------------------------------/
 //------------------------- Page de connection ---------------------------------------/
@@ -118,6 +135,7 @@ app
         req.session.adr_ip = ip.address();
 
         res.render('login.ejs', { session: req.session });
+        
     }) // EO singin
 //------------------------------------------------------------------------------------/
 //------------------------- Page carouselle---------------------------------------/
@@ -136,6 +154,37 @@ app
         res.render('acc.ejs', { session: req.session });
     }) // EO singin
 
+//------------------------- Page Ajouter Article ---------------------------------------/
+//------------------------------------------------------------------------------------/
+.get('/forum/addPage', function(req, res) {
+        req.session.adr_ip = ip.address();
+
+        res.render('addPage.ejs', { session: req.session });
+    }) // EO singin
+.post('/forum/add_topic', urlencodedParser, function(req, res) {
+
+        if (req.session.connection) {
+            var data = {
+                topic: req.body.title_topic,
+                paper: req.body.title_paper,
+                content: req.body.paper,
+                author: req.session.username
+            }
+            db.new_topic(data, function(err) {
+                    if (err) {
+                        req.session.error = err;
+                        res.redirect('/forum/papers/' + data.topic);
+                    } else {
+                        res.redirect('/forum/index');
+                    } // EO if/else
+
+                }) //EO new_topic()
+
+        } else {
+            req.session.error = 'Veuillez vous connecter pour ouvrir un nouveau sujet';
+            res.redirect('/forum/index');
+        } //EO if/else
+    }) //EO /forum/add_sujet
 //------------------------------------------------------------------------------------/
 //-------- Traitement du formulaire d'authentification utilisateur -------------------/
 //------------------------------------------------------------------------------------/
@@ -174,14 +223,11 @@ app
         req.session.username = '';
         req.session.email = '';
         req.session.topic = false;
-        user_connect = 1;
+        user_connect -= 1;
         console.log(user_connect + ' Utilisateur connectés sur le forum')
         res.redirect('/forum/index');
 
-
-
     }) // EO logout
-
 
 //------------------------------------------------------------------------------------/
 //------------------- Traitement du formulaire d'inscription -------------------------/
@@ -211,6 +257,7 @@ app
                     req.session.username = new_user.username;
                     req.session.email = new_user.email;
                     res.redirect('/forum/index');
+                    user_connect++;
                 } // EO if/else
             }); // EO db.signin
 

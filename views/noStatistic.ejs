@@ -1,26 +1,79 @@
+
+
+
 <!DOCTYPE html>
 
 <%
 		var dateNow = new Date();
-				
+			
 %>
-    <div class="row" style="margin: 0px;">
-        <div class="col" style="margin-top: 12px;">
-            <div class="alert alert-info text-lowercase border rounded shadow-sm" role="alert"><span><strong>Nous sommes le <span><strong>Nous sommes le : <%=dateNow.getDate()%>/<%=dateNow.getMonth()+1%>/<%=dateNow.getFullYear()%>&nbsp;</strong></span></div>
-            <div class="alert alert-info text-lowercase border rounded shadow-sm" role="alert"><span><strong>Nombre d'article écrits : 0&nbsp;</strong></span></div>
-            <div class="alert alert-info text-lowercase border rounded shadow-sm" role="alert"><span><strong>Nombres d'inscrits : 0&nbsp;</strong></span></div>
-            <div class="alert alert-info text-lowercase border rounded shadow-sm" role="alert"><span><strong>Utilisateur connecté : 0&nbsp;:&nbsp;</strong></span></div>
-            <div class="alert alert-info text-lowercase border rounded shadow-sm" role="alert"><span><strong>Article le plus commenté :&nbsp;</strong></span>
-                <ul>
-                    <li>Titre :&nbsp;Aucun article posté</li>
-                    <li>Sujet :&nbsp;Aucun article posté</li>
-                </ul>
+
+<div class="row" style="margin: 0px;">
+    <div class="col">
+        <div class="alert alert-dismissible alert-secondary text-lowercase border rounded shadow-sm border"
+            role="alert"><span><strong> Statistiques</strong>
+                <hr>
+                <div class="alert alert-info-danger text-lowercase border rounded shadow-sm pb-1 pt-1" role="alert">
+                    <span><strong>Nous sommes le :&nbsp;<%=dateNow.getDate()%>/<%=dateNow.getMonth()+1%>/
+                            <%=dateNow.getFullYear()%></strong></span>
+                </div>
+                <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert">
+                    <span><strong>Nombre de sujets ouverts : 0</strong></span>
+                </div>
+                <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert">
+                    <span><strong>Nombre d'article écrits : 0</strong></span>
+                </div>
+             
+
+       <% if(session.connection){ %>
+                <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert">
+                    <span><strong>Nombres d'inscrits :&nbsp;<%=statistics.nbT_users %></strong></span>
+                </div>
+        <% } else { %>  
+                <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert">
+                    <span><strong>Nombres d'inscrits : 0</strong></span>
+                </div>
+        <% } %>
+
+        <% if(session.connection){ %>
+                <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert"><span><strong>
+                            <%=session.user_connect%> Utilisateur(s) connecté </strong></span>
+                </div>
+
+        <% } else { %>  
+               <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert"><span><strong>
+                           0 Utilisateur(s) connecté </strong></span>
+                </div>
+        <% } %>
+
+        <% if(session.connection){ %>
+            <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert">
+                <span><strong>Dernier utilisateur inscrit: <%=statistics.last_user %> </strong></span>
             </div>
-            <div class="alert alert-info text-lowercase border rounded shadow-sm" role="alert"><span><strong>Dernièr article posté :&nbsp;</strong></span>
-                <ul>
-                    <li>Titre :&nbsp;Aucun article posté</li>
-                    <li>Sujet :&nbsp;Aucun article posté</li>
-                </ul>
+        <% } else { %>  
+            <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert">
+                <span><strong>Dernier utilisateur inscrit: Aucun :(</br></strong></span>
             </div>
+        <% } %>
+
+                <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert">
+                    <span><strong>Article le plus commenté :&nbsp;</strong></span>
+                    <ul>
+                        <li>Aucun article</li>
+                        <li>Acun article</li>
+                    </ul>
+                </div>
+                <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert">
+                    <span><strong>Dernièr article posté :&nbsp;</strong></span>
+                     <ul>
+                         <li>Titre :&nbsp;Aucun article posté</li>
+                         <li>Sujet :&nbsp;Aucun article posté</li>
+                     </ul>
+                </div>
         </div>
     </div>
+</div>
+</div>
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>

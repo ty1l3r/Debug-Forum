@@ -1,129 +1,79 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Forum H4kh4 Music</title>
-    <link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
-    <link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
-</head>
-<body>
-    
-    <%- include('header') %>
+    <%- include('head') %>
 
+    <body>
 
-<div class="container-fluid mt-3">
-    <div class="row">
+        <%- include('header') %>
 
+        <div class="container-fluid mt-3">
+            <!--========================== COLONNE DE GAUCHE=========================-->
+            <div class="row">
+                <div class="col-xl-7">
+                    <%if(!session.connection){%>
+                    <div class="col">
+                        <div class="row"></div>
+                        <div class="alert alert-success" role="alert"><span><strong>Vous devez être connecté pour
+                                    consulter ou poster un article.</strong></span></div>
 
-        <div class="col-xl-7">
-              <%if(!session.connection){%>
-            
-
-
-                <div class="col">
-                     <div class="row"></div>
-                    <div class="alert alert-success" role="alert"><span><strong>Vous devez être connecté pour consulter ou poster un article.</strong></span></div>
-                   
                         <div class="col">
-    <%- include('carouselle') %>
+                            <%- include('carouselle') %>
                         </div>
                     </div>
                 </div>
-    <%}else{%>
-
-    <div class="container">
-
-
-
- <!--Boucle d'affichage -->
- <div class="row">
-
-     <div class="col">
-
-         <% for(var i = (topics.length-1) ; i >= 0 ; i--) {
-        topic = topics[i];  
-        var dateTopic = topic.date;
-    %>
-
-        <div class="card mr-3 mb-3" style="">
-        <div class="card-body border rounded shadow-sm">
-
-                <div class="background alert alert-info text-lowercase border rounded shadow-sm" role="alert">
-                  <a href="/forum/papers/<%=topic.title %>"><strong><%=topic.title %></strong></a>  
+                <%}else{%>
+                <div class="container">
+                    <!--Boucle d'affichage -->
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <% for(var i = (topics.length-1) ; i >= 0 ; i--) {
+            topic = topics[i];  
+            var dateTopic = topic.date;
+        %>
+        <div class="card mr-3 mb-2">
+            <div class="card-body border rounded shadow-sm p-2">
+                <div class="background alert alert-info text-lowercase border rounded shadow-sm mb-1"
+                    role="alert">
+                    <a href="/forum/papers/<%=topic.title %>" style="font-size:22px"><strong><%=topic.title %></strong></a><span></span>
+                    <p class="ml-0 pb-0 mb-0 pb-0"><b style="color:blue; font-size:12px">Auteur du sujet :</b>
+                    <b style="color:brown; font-size:12px"><%= topic.author%></b> 
+                    <b style="color:blue; font-size:12px"> le </b> <b style="color:brown; font-size:12px"><%=dateTopic.getDate()%>/<%=dateTopic.getMonth()+1%>/<%=dateTopic.getFullYear()%></b></p>
                     
-                <span></span></div>
-                <p class="ml-1">écrit par :&nbsp; <%= topic.author%></p>
-                <p class="ml-1">sujet ouvert le &nbsp;<%=dateTopic.getDate()%>/<%=dateTopic.getMonth()+1%>/<%=dateTopic.getFullYear()%></p>
+                    
+                </p>
+
+                </div>
+            
+            </div>
         </div>
-
-     </div>
-
-     
-
-    <!---->
-
-    <!---->
-
-    
-
-
-     
-        
-           <%}%>
-           </div>
-
-
-    </div>
-
-<div class="row">
-    <div class="col">
-     <%- include('add') %>
-     </div>
-</div>
- </div>
-   
-   
-    <hr>
-
-
-   
-
-<!--=============================================================-->
-    </div><!--EO container 1 -->
-      
-       
-           
-       
-       <%}%>
-
-      
-<!--========================================== COLONNE DE DROITE =========================-->
-        <div class="col-xl-4">
-
-             <% if(statistics < 1){ %>
+        <%}%><!--EO Boucle d'affichage -->
+            </div>
+        </div>
+    <div class="row">
+        <div class="col pl-0 pr-0 mt-1">
+<!--Include Ajout de commentaires -->
+<%- include('add') %>
+                            <!--============================= -->
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <%}%>
+            <!--========================================== COLONNE DE DROITE =========================-->
+    <div class="col-xl-4">
+        <% if(statistics){ %>
             <%- include('noStatistic') %>
             <% } else { %>
-           
             <%- include('statistic') %>
-           
             <% } %>
-
-
         </div>
-<!--=============================================================-->
-
-        
-  </div>
-
-    </div>
-
-
-
-         <%- include('footer') %>
-
-    <script src="/js/jquery.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/js/bs-animation.js"></script>
-</body>
+        </div>
+        <%- include('footer') %>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/js/bs-animation.js"></script>
+    </body>
 
 </html>

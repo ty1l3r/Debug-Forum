@@ -1,128 +1,122 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>
-            <%= session.topic%>
-        </title>
-        <link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
-        <link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
-    </head>
+    <%- include('head') %>
+
     <body>
-
-    <%- include('header') %>
-    
-    <% 	var datePaper;
-
+        <%- include('header') %>
+        <% 	var datePaper;
         for(var i = (papers.length-1) ; i >= 0 ; i--) {
         paper = papers[i];
         comment = paper.comment; 
         datePaper = paper.date;
     %>
+        <!-- -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="container-xl-8 mt-3">
+                        <div class="card border rounded">
+                            <div class="card-body">
 
-<!-- -->
-<div class="container-fluid">
-<div class="row">
-    <div class="col">
-         <div class="container">
-        <div class="card border rounded">
-            <div class="card-body">
+                                <div class="alert alert-info" role="alert">
+                                    <h4 class="m-0"><%= session.topic%></h4> <i class="fas fa-arrow-circle-down"></i>
+                                </div>
+                                <div class="alert alert-secondary" role="alert">
+                                    <h3 class="card-title"></h3>
+                                    <h4 class="card-subtitle mb-2" style="color:blue"> <%=paper.title %></h4>
+                                    <h5 style="color:black"> <%=paper.content %></h5>
 
-                  <div class="alert alert-secondary" role="alert">
-             <h4>Contenue du message : </h4> <i class="fas fa-arrow-circle-down"></i>
+                                    <p class="text-muted card-subtitle mb-1 pt-2">
+                                        <b style="font-size:13px; color:black">Posté par :</b>
+                                        <b style="color:blue; font-size:12px"><%= paper.author %></b>
+                                        <b style="font-size:13px; color:black">le </b>
+                                        <b
+                                            style="color:blue; font-size:12px"><%=datePaper.getDate()%>/<%=datePaper.getMonth()+1%>/<%=datePaper.getFullYear()%></b>
+                                        <b style="font-size:13px; color:black">à </b>
+                                        <b style="color:blue; font-size:12px"><%=datePaper.getHours()%> h
+                                            <%=datePaper.getMinutes()%></b></p>
 
-                  </div>
-               
-                <div class="alert alert-secondary" role="alert">
-                    <h4 class="card-title"><%= session.topic%></h4>
-                    <h6 class="text-muted card-subtitle mb-2"> <%=paper.title %></h6>
-                    <p> <%=paper.content %></p>
-              
-                <h6 class="text-muted card-subtitle mb-2">Article écrit par : <%= paper.author %>&nbsp;</h6></hr>
-                <h6 class="text-muted card-subtitle mb-2">le : <%=datePaper.getDate()%>/<%=datePaper.getMonth()+1%>/<%=datePaper.getFullYear()%></h6>
-           
-                <h6 class="text-muted card-subtitle mb-2">a : <%=datePaper.getHours()%> heures <%=datePaper.getMinutes()%></h6>
+                                </div>
+                                <hr style="background-color: #f1eded;">
+                                <div class="alert alert-dismissible alert-info" role="alert">
+                                    <h4 class="m-0">Commentaires :</h4>
+                                </div>
 
-                  </div>
+                                <!--Affichage des commentaries-->
 
-                <hr style="background-color: #f1eded;">
-
-            <div class="alert alert-dismissible alert-primary" role="alert">
-             <h4>Commentaires :</h4>
-             </div>
-
-    <div class="alert alert-dismissible alert-primary">
-                  
-<!--Affichage des commentaries-->
-        <%comment.forEach(function(comment) {
+                                <%comment.forEach(function(comment) {
                             var dateCom = comment.date;
         %>
-        <div class="alert alert-dismissible alert-primary">
-            <h4><%=comment.content %></h4>        
-                <div class="text-muted card-subtitle mb-2">
-                    <h6 class="text-muted card-subtitle mb-2">Article écrit par :  <%=comment.author %> </h6>
-                    <h6 class="text-muted card-subtitle mb-2">le : <%=dateCom.getDate()%>/<%=dateCom.getMonth()+1%>/<%=dateCom.getFullYear()%></h6>
-                    <h6 class="text-muted card-subtitle mb-2">à :    <%=dateCom.getHours()%> h <%=dateCom.getMinutes()%></h6>
-                </div>   
+                                <div class="alert alert-dismissible alert-primary text-muted card-subtitle">
+
+                                    <h5 style="color:black"><%=comment.content %></h5>
+
+
+                                    <div class="text-muted card-subtitle mb-2">
+
+                                        <p class="text-muted card-subtitle mb-1 pt-2">Posté par :
+                                            <b><%=comment.author %> </b>&nbsp;
+                                            le :
+                                            <b><%=datePaper.getDate()%>/<%=datePaper.getMonth()+1%>/<%=datePaper.getFullYear()%></b>
+                                            à <b><%=datePaper.getHours()%></b> h <b><%=datePaper.getMinutes()%></b>
+                                            minutes</p>
+
+
+
+                                    </div>
+
+                                </div>
+                                <%});%>
+                                <!--EO Boucle -->
+
+
+                                <!--Ajouter un commentaire -->
+                                <%if(!session.connection){%>
+                                <h4 class="new">Connectez vous pour ajouter un commentaire</h4>
+
+                                <%} else{%>
+
+                                <div class="col-xl-12">
+                                    <div class="alert alert-info" style:"margin-left:-40px" role="alert">
+                                        <h4 class="mt-0">Ajouter un commentaire :</h4>
+                                    </div>
+
+                                    <form class="new_comment" action="/forum/comment/<%=paper.title%>" method="post">
+                                        <div class="row">
+                                            <div class="col mt-0"><textarea name="content" required autocomplete="off"
+                                                    style="width: 533px;height: 144px;"
+                                                    placeholder=" Ajoutez votre commentaire..."></textarea></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mt-0" style="margin: 0px;">
+                                                <button class=" submit_comment btn btn-primary d-xl-flex mt-1"
+                                                    type="submit" method="post" action="/forum/comment/<%=paper.title%>"
+                                                    value="envoyer"
+                                                    style="padding: 8px;margin-top: 17px;margin-right: 470px;">Envoyer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--EO card Body-->
+                </div>
+                <!--EO card Border-->
+                <% } %>
+            </div>
+            <!--EO container -->
+
+
         </div>
-        <%});%>
-<!--=============================-->
-    </div>
-
-<!--Ajouter un commentaire -->
-
-    <%if(!session.connection){%>
-                            <h4 class="new">Connectez vous pour ajouter un commentaire</h4>
-
-     <%} else{%>
-
-    <div class="col">
-        <p style="font-size: 17px;">Ajouter un commentaire :</p>
-    </div>
-
-    <form class="new_comment" action="/forum/comment/<%=paper.title%>" method="post">  
-        <div class="row">
-            <div class="col"><textarea name="content" required
-            autocomplete="off"style="width: 533px;height: 144px;"></textarea></div>
+        <div class="col-xl-4 mt-3">
+            <%- include('statistic') %>
         </div>
-    <div class="row">
-
-        <div class="col" style="margin: 0px;">
-
-        
-        <button class=" submit_comment btn btn-primary d-xl-flex" type="submit" method="post" action="/forum/comment/<%=paper.title%>"
-        value="envoyer"
-        style="padding: 8px;margin-top: 17px;margin-right: 470px;">Envoyer</button>
-    </form>  
-
         </div>
-    </div>
-    </div><!--EO card Body-->
-    </div><!--EO card Border-->
-       <% } %>
-</div><!--EO container -->
+        </div>
+        </div>
 
-
-    </div>
-    <div class="col">
-        <%- include('statistic') %>
-
-    </div>
-</div>
-</div>
-
-
-
-
-
-
-
-<!--=============================-->
-<%}%>
-                
-
-                <%- include('footer') %>
-
-              
+        <!--=============================-->
+        <%}%>             
+        <%- include('footer') %>
     </body>
 
 </html>

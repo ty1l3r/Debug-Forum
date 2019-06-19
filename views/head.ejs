@@ -1,0 +1,27 @@
+<head>    <!-- device-width pour responsive adapter a la taille de l'écrand -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Footer-Clean.css">
+    <link rel="stylesheet" href="/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <link rel="stylesheet" href="/fonts/ionicons.min.css">
+     <link rel="stylesheet" href="/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="/css/Footer-Basic.css">
+     <link rel="stylesheet" href="/fonts/ionicons.min.css">
+    <link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
+    <link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
+
+      <%= session.topic%>
+
+    <% if(session.error){
+		var error_message = session.error;
+	 %>
+        <script>
+            var error_message = '<%=error_message%>';
+            alert(error_message);
+        </script>
+        <% } session.error = undefined;  	%>
+
+</head>

@@ -1,36 +1,16 @@
 <!DOCTYPE html>
 
-<head>    <!-- device-width pour responsive adapter a la taille de l'écrand -->
+ <%- include('head') %>
 
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/Footer-Clean.css">
-    <link rel="stylesheet" href="/css/Navigation-with-Button.css">
-    <link rel="stylesheet" href="/css/Registration-Form-with-Photo.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-      <link rel="stylesheet" href="/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="/css/Footer-Basic.css">
-    <link rel="shortcut icon" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
-    <link rel="icon" type="image/gif" href="http://<%=session.adr_ip%>:8080/img/animated_favicon1.gif">
-
-    <% if(session.error){
-		var error_message = session.error;
-	 %>
-        <script>
-            var error_message = '<%=error_message%>';
-            alert(error_message);
-        </script>
-        <% } session.error = undefined;  	%>
-
-</head>
 <!--============ BARRE DE NAVIGATION ==================-->
 <div>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+        <img src="https://scontent.fcdg2-1.fna.fbcdn.net/v/t1.0-9/17353300_594188280778869_4101670546309063191_n.jpg?_nc_cat=101&_nc_ht=scontent.fcdg2-1.fna&oh=76e963f0bc9dcd2bc8e4d58e490d22ec&oe=5D970CD1" style="width:50px; heigth:50px"alt="">
         <div class="container-fluid"><a class="navbar-brand" href="/forum/acc">Forum AkMusic</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/forum/index">Forum</a></li>
-              
+                     <li class="nav-item" role="presentation"><a class="nav-link" href="/forum/addPage">Ajouter un sujet</a></li>
                 </ul>
                 <span class="navbar-text actions"> 
         <%if(!session.connection){%>

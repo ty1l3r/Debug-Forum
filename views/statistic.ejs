@@ -7,48 +7,51 @@
 		var last_paper_date = 	last_paper.date;				
 %>
 
-    <div class="row" style="margin: 0px;">
-        <div class="col">
-
-       
-            <div class="alert alert-dismissible alert-secondary text-lowercase border rounded shadow-sm border" role="alert"><span><strong> Statistiques</strong><hr>
-
-            <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert"><span><strong>Nous sommes le :&nbsp;<%=dateNow.getDate()%>/<%=dateNow.getMonth()+1%>/
-            <%=dateNow.getFullYear()%></strong></span>
-            </div>
-
-            <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert"><span><strong>Nombre de sujets ouverts :&nbsp;<%=statistics.nbT_topics %></strong></span></div>
-
-            <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert"><span><strong>Nombre d'article écrits :&nbsp;<%=statistics.nbT_papers %></strong></span></div>
-
-            <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert"><span><strong>Nombres d'inscrits :&nbsp;<%=statistics.nbT_users %></strong></span>
-            </div>
-
-            <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert"><span><strong> <%=session.user_connect%> Utilisateur(s) connecté </strong></span>
-            </div>
-
-             <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert"><span><strong>Dernier utilisateur inscrit:</br> <%=statistics.last_user %> </strong></span>
-            </div>
-
-            <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert"><span><strong>Article le plus commenté :&nbsp;</strong></span>
-                <ul>
-                    <li><a href="/forum/papers/<%=paperMC.topic%>"> <%=paperMC.title %> </a></li>
-                    <li>Sujet : <%=paperMC.topic %></li>
-                </ul>
-            </div>
-
-            <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert"><span><strong>Dernièr article posté :&nbsp;</strong></span>
-                <ul>
-                    <li> <a href="/forum/papers/<%=paperMC.topic%>"> <%=last_paper.title %> </a></li>
-                    <li>écrit le : <%=last_paper_date.getDate()%>/<%=last_paper_date.getMonth()+1%>/<%=last_paper_date.getFullYear()%> </br></li>
-                    <li>par : <%=last_paper.author %> </li>
-                </ul>
-            </div>
-
+<div class="row" style="margin: 0px;">
+    <div class="col">
+        <div class="alert alert-dismissible alert-secondary text-lowercase border rounded shadow-sm border"
+            role="alert"><span><strong> Statistiques</strong>
+                <hr>
+                <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert">
+                    <span><strong>Nous sommes le :&nbsp;<%=dateNow.getDate()%>/<%=dateNow.getMonth()+1%>/
+                            <%=dateNow.getFullYear()%></strong></span>
+                </div>
+                    <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert">
+                        <span><strong>Nombre de sujets ouverts :&nbsp;<%=statistics.nbT_topics %></strong></span>
+                    </div>
+                <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert">
+                    <span><strong>Nombre d'article écrits :&nbsp;<%=statistics.nbT_papers %></strong></span>
+                </div>
+                    <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert">
+                        <span><strong>Nombres d'inscrits :&nbsp;<%=statistics.nbT_users %></strong></span>
+                    </div>
+                <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert"><span><strong>
+                            <%=session.user_connect%> Utilisateur(s) connecté </strong></span>
+                </div>
+                    <div class="alert alert-info-danger text-lowercase border rounded shadow-sm" role="alert">
+                        <span><strong>Dernier utilisateur inscrit:</br> <%=statistics.last_user %> </strong></span>
+                    </div>
+                <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert">
+                    <span><strong>Article le plus commenté :&nbsp;</strong></span>
+                    <ul>
+                        <li><a href="/forum/papers/<%=paperMC.topic%>"> <%=paperMC.title %> </a></li>
+                        <li>Sujet : <%=paperMC.topic %></li>
+                    </ul>
+                </div>
+                    <div class="alert alert-info-danger  text-lowercase border rounded shadow-sm" role="alert">
+                        <span><strong>Dernièr article posté :&nbsp;</strong></span>
+                        <ul>
+                            <li> <a href="/forum/papers/<%=paperMC.topic%>"> <%=last_paper.title %> </a></li>
+                            <li>écrit le :
+                                <%=last_paper_date.getDate()%>/<%=last_paper_date.getMonth()+1%>/<%=last_paper_date.getFullYear()%>
+                                </br></li>
+                            <li>par : <%=last_paper.author %> </li>
+                        </ul>
+                    </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</div>
+</div>
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>

@@ -69,7 +69,7 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fff
+    background-color: #0c5460;
 }
 
 [tabindex="-1"]:focus {
@@ -5595,6 +5595,10 @@ a.badge-dark:focus {
     border-color: #b8daff
 }
 
+.background{
+    background-color: #dadadb;
+}
+
 .alert-primary hr {
     border-top-color: #9fcdff
 }
@@ -5605,7 +5609,7 @@ a.badge-dark:focus {
 
 .alert-secondary {
     color: #383d41;
-    background-color: #ccd6ef;
+    background-color: #ffffff;
     border-color: #d6d8db
 }
 
@@ -5633,7 +5637,7 @@ a.badge-dark:focus {
 
 .alert-info {
     color: #0c5460;
-    background-color:#0034af33;
+    background-color:#47484a33;
     border-color: black;
 }
 
@@ -7129,7 +7133,7 @@ button.bg-dark:hover {
 }
 
 .border {
-    border: 1px solid #dee2e6 !important
+    border: 1px solid #4a86c1 !important;
 }
 
 .border-top {
